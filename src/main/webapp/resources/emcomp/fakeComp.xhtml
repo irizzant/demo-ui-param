@@ -1,0 +1,32 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:em="http://java.sun.com/jsf/composite/emcomp">
+
+<h:body>
+	<composite:interface>
+
+		<composite:attribute name="value" required="true" />
+
+		<composite:attribute name="process" required="true" />
+
+		<composite:attribute name="update" required="true" />
+
+	</composite:interface>
+
+	<composite:implementation>
+
+		<p:inputText id="valueInput" value="#{cc.attrs.value}" required="true" />
+
+		<p:commandButton process="@this #{cc.attrs.process}" update="#{cc.attrs.update}" value="Submit"/>
+
+	</composite:implementation>
+
+</h:body>
+
+</h:html>

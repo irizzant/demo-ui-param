@@ -1,0 +1,47 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:em="http://java.sun.com/jsf/composite/emcomp">
+
+<h:body>
+	<composite:interface>
+		<!-- Nome da dare al componente fondamentale per fare apparire la dialog -->
+		<composite:attribute name="widgetVar" required="true" />
+
+		<!-- Passare l'opportuno helper che va implementato nel controller della pagina dove vogliamo usare tale componente -->
+		<composite:attribute name="helper" required="true" />
+
+	</composite:interface>
+
+	<composite:implementation>
+
+		<ui:param name="internalHelper" value="#{cc.attrs.helper}"/>
+		<ui:param name="internalWidgetVar" value="#{cc.attrs.widgetVar}"/>
+
+		<p:dialog id="myId" widgetVar="#{internalWidgetVar}"
+			responsive="true" header="Confirm Operation" modal="true"
+			closeOnEscape="true" width="600">
+			<div align="center">
+
+				<ui:insert name="preHeader">
+				</ui:insert>
+
+				<ui:insert name="header">
+					<h:panelGroup layout="block" styleClass="noBorders">
+
+						<h:outputText id="output" value="Template #{internalHelper.testString}"/>
+
+					</h:panelGroup>
+				</ui:insert>
+
+			</div>
+		</p:dialog>
+
+	</composite:implementation>
+</h:body>
+</h:html>
